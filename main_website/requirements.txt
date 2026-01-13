@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+jinja2
+python-dotenv
+psycopg2-binary
+python-multipart
+supabase
+httpx
