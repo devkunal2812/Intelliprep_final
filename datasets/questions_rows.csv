@@ -1,0 +1,113 @@
+id,question_text,option_a,option_b,option_c,option_d,correct_option,domain,topic,difficulty,is_active,created_at
+1,"If a sum of money doubles itself in 8 years at simple interest, what is the rate of interest per annum?",10.50%,12.50%,15%,8%,B,aptitude,quantitative aptitude,easy,true,2026-01-04 09:14:51.417506
+2,A train 150m long is running at a speed of 54 km/hr. How much time will it take to cross a platform 210m long?,20 seconds,24 seconds,18 seconds,30 seconds,B,aptitude,quantitative aptitude,medium,true,2026-01-04 09:14:51.417506
+3,What is the unit digit in the product (7^95 - 3^58)?,0,4,6,7,B,aptitude,quantitative aptitude,hard,true,2026-01-04 09:14:51.417506
+4,A and B can complete a work in 15 days and 10 days respectively. They started together but B left after 2 days. In how many days can A finish the remaining work?,10 days,12 days,8 days,9 days,A,aptitude,quantitative aptitude,medium,true,2026-01-04 09:14:51.417506
+5,"The ratio of ages of Ravi and Hema is 4:3. After 6 years, Ravi's age will be 26 years. What is Hema's present age?",12 years,15 years,18 years,21 years,B,aptitude,quantitative aptitude,easy,true,2026-01-04 09:14:51.417506
+6,Find the average of all prime numbers between 30 and 50.,39.8,38,41,39,A,aptitude,quantitative aptitude,medium,true,2026-01-04 09:14:51.417506
+7,"If 20% of a = b, then b% of 20 is the same as:",4% of a,5% of a,20% of a,None of these,A,aptitude,quantitative aptitude,medium,true,2026-01-04 09:14:51.417506
+8,"A shopkeeper sells an article at a loss of 10%. Had he sold it for Rs. 90 more, he would have gained 5%. Find the cost price.",Rs. 500,Rs. 600,Rs. 750,Rs. 800,B,aptitude,quantitative aptitude,hard,true,2026-01-04 09:14:51.417506
+9,"Two numbers are in the ratio 3:5. If 9 is subtracted from each, they are in the ratio 12:23. The smaller number is:",27,33,49,55,B,aptitude,quantitative aptitude,hard,true,2026-01-04 09:14:51.417506
+10,In how many ways can the letters of the word 'LEADER' be arranged?,720,360,120,144,B,aptitude,quantitative aptitude,medium,true,2026-01-04 09:14:51.417506
+11,"A cistern can be filled by a tap in 4 hours while it can be emptied by another tap in 9 hours. If both taps are opened simultaneously, then after how much time will the cistern get filled?",7 hours,7.2 hours,8 hours,9.1 hours,B,aptitude,quantitative aptitude,medium,true,2026-01-04 09:14:51.417506
+12,"Find the compound interest on Rs. 10,000 for 2 years at 10% per annum compounded annually.",Rs. 2000,Rs. 2100,Rs. 1100,Rs. 2200,B,aptitude,quantitative aptitude,easy,true,2026-01-04 09:14:51.417506
+13,"Pointing to a photograph, Vipul said, 'She is the daughter of my grandfather's only son.' How is Vipul related to the girl in the photograph?",Father,Brother,Cousin,Uncle,B,aptitude,logical reasoning,easy,true,2026-01-04 09:14:51.417506
+14,Statements: All bags are pockets. All pockets are pouches. Conclusions: I. All bags are pouches. II. Some pouches are bags.,Only I follows,Only II follows,Either I or II follows,Both I and II follow,D,aptitude,logical reasoning,medium,true,2026-01-04 09:14:51.417506
+15,"In a certain code, TEACHER is written as VGCEJGT. How is CHILDREN written in that code?",EJKNEGTP,EGKNFITP,EJKNFGTO,EJKNFTGP,D,aptitude,logical reasoning,medium,true,2026-01-04 09:14:51.417506
+16,"If '+' means 'divided by', '-' means 'added to', 'x' means 'subtracted from' and '/' means 'multiplied by', then what is the value of 24 + 12 - 8 x 6 / 2?",-2,15,0,-1,A,aptitude,logical reasoning,hard,true,2026-01-04 09:14:51.417506
+17,"Find the missing number: 4, 9, 25, 49, 121, ?",144,169,196,225,B,aptitude,logical reasoning,easy,true,2026-01-04 09:14:51.417506
+18,"Six persons A, B, C, D, E and F are sitting in a circle facing the center. B is between F and D. E is between A and C. A is to the left of D. Who is between A and F?",B,C,D,E,D,aptitude,logical reasoning,hard,true,2026-01-04 09:14:51.417506
+19,A man walks 5 km towards South and then turns to the right. After walking 3 km he turns to the left and walks 5 km. Now in which direction is he from the starting place?,West,South,South-West,North-East,C,aptitude,logical reasoning,medium,true,2026-01-04 09:14:51.417506
+20,Which of the following does not belong to the group?,Zebra,Lion,Tiger,Horse,D,aptitude,logical reasoning,easy,true,2026-01-04 09:14:51.417506
+21,"Statement: Should students take part in politics? Argument I: Yes, it helps in developing leadership qualities. Argument II: No, they should only study.",Only I is strong,Only II is strong,Either I or II is strong,Neither I nor II is strong,A,aptitude,logical reasoning,medium,true,2026-01-04 09:14:51.417506
+22,"If 'Rain' is 'Water', 'Water' is 'Road', 'Road' is 'Cloud', 'Cloud' is 'Sky', 'Sky' is 'Sea' and 'Sea' is 'Path', where do aeroplanes fly?",Cloud,Sky,Sea,Water,C,aptitude,logical reasoning,medium,true,2026-01-04 09:14:51.417506
+23,"Complete the series: 7, 10, 8, 11, 9, 12, ...",7,10,12,13,B,aptitude,pattern / series / odd-one-out,easy,true,2026-01-04 09:14:51.417506
+24,"Find the odd one out: 3, 5, 11, 14, 17, 21",21,17,14,3,C,aptitude,pattern / series / odd-one-out,easy,true,2026-01-04 09:14:51.417506
+25,"Find the missing term in the sequence: SCD, TEF, UGH, ____, WKL",CMN,UJI,VIJ,IJT,C,aptitude,pattern / series / odd-one-out,medium,true,2026-01-04 09:14:51.417506
+26,"Identify the next number in the pattern: 2, 6, 12, 20, 30, 42, ...",50,52,56,60,C,aptitude,pattern / series / odd-one-out,medium,true,2026-01-04 09:14:51.417506
+27,"Odd one out: Square, Rectangle, Triangle, Cube",Square,Rectangle,Triangle,Cube,D,aptitude,pattern / series / odd-one-out,easy,true,2026-01-04 09:14:51.417506
+28,Choose the word which is least like the other words in the group.,Copper,Zinc,Brass,Aluminum,C,aptitude,basic verbal / reasoning,medium,true,2026-01-04 09:14:51.417506
+29,Identify the relationship: Odometer is to Mileage as Compass is to ...,Speed,Hiking,Direction,Needle,C,aptitude,basic verbal / reasoning,easy,true,2026-01-04 09:14:51.417506
+30,Choose the synonym for 'ABANDON'.,Keep,Forsake,Adopt,Believe,B,aptitude,basic verbal / reasoning,easy,true,2026-01-04 09:14:51.417506
+31,Which of the following is the correct way to declare a constant in C?,const int x = 10;,#define x 10,Both A and B,None of these,C,technical,"c language basics (syntax, control flow)",easy,true,2026-01-04 09:14:51.417506
+32,What is the range of 'signed char' in C?,0 to 255,-128 to 127,-255 to 255,0 to 127,B,technical,"c language basics (syntax, control flow)",easy,true,2026-01-04 09:14:51.417506
+33,Which operator has the highest precedence in C?,*,(),++,+,B,technical,"c language basics (syntax, control flow)",medium,true,2026-01-04 09:14:51.417506
+34,What is the result of the expression 5 / 2 in C when using integers?,2.5,2,3,Error,B,technical,"c language basics (syntax, control flow)",easy,true,2026-01-04 09:14:51.417506
+35,Which of the following is not a valid loop in C?,for,while,do-while,repeat-until,D,technical,"c language basics (syntax, control flow)",easy,true,2026-01-04 09:14:51.417506
+36,What does the 'continue' statement do in C?,Exit the loop,Skip the rest of the current iteration,Restart the program,Jump to a label,B,technical,"c language basics (syntax, control flow)",medium,true,2026-01-04 09:14:51.417506
+37,A 'switch' statement in C can evaluate which types of data?,float and double,int and char,Only int,Any data type,B,technical,"c language basics (syntax, control flow)",medium,true,2026-01-04 09:14:51.417506
+38,What is the default return type of a function in C if not specified?,void,float,int,char,C,technical,"c language basics (syntax, control flow)",medium,true,2026-01-04 09:14:51.417506
+39,Which storage class has the shortest lifetime in C?,static,extern,register,auto,D,technical,"c language basics (syntax, control flow)",hard,true,2026-01-04 09:14:51.417506
+40,Which header file is required to use the 'printf' function?,<conio.h>,<stdlib.h>,<stdio.h>,<string.h>,C,technical,"c language basics (syntax, control flow)",easy,true,2026-01-04 09:14:51.417506
+41,"In C, what is the size of an empty struct?",0 bytes,1 byte,4 bytes,Undefined behavior,D,technical,"c language basics (syntax, control flow)",hard,true,2026-01-04 09:14:51.417506
+42,Which keyword is used to prevent any changes to a variable within a C program?,immutable,static,const,final,C,technical,"c language basics (syntax, control flow)",easy,true,2026-01-04 09:14:51.417506
+43,What is the index of the first element in an array of size N?,1,0,N-1,-1,B,technical,arrays & strings,easy,true,2026-01-04 09:14:51.417506
+44,Which function is used to find the length of a string in C?,sizeof(),length(),strlen(),strnlen(),C,technical,arrays & strings,easy,true,2026-01-04 09:14:51.417506
+45,How do you initialize a string 'str' with the value 'Hello'?,"char str[5] = ""Hello"";","char str[] = ""Hello"";","string str = ""Hello"";",char str = 'Hello';,B,technical,arrays & strings,medium,true,2026-01-04 09:14:51.417506
+46,What happens if you try to access an array element outside its bounds in C?,Compilation error,Runtime exception,Undefined behavior,Returns 0,C,technical,arrays & strings,medium,true,2026-01-04 09:14:51.417506
+47,Which of the following is the correct way to declare a 2D array in C?,"int a[2,2];",int a[2][2];,"int a(2,2);",int a[2]2;,B,technical,arrays & strings,easy,true,2026-01-04 09:14:51.417506
+48,Which function is used to compare two strings in C?,strcmp(),strcmpi(),strcompare(),memcmp(),A,technical,arrays & strings,medium,true,2026-01-04 09:14:51.417506
+49,What is the termination character for strings in C?,\n,\t,\0,\s,C,technical,arrays & strings,easy,true,2026-01-04 09:14:51.417506
+50,"If char arr[] = ""A"", what is the result of sizeof(arr)?",1,2,4,8,B,technical,arrays & strings,medium,true,2026-01-04 09:14:51.417506
+51,What is the base address of an array?,Address of the first element,Address of the last element,The total size of the array,None of these,A,technical,arrays & strings,easy,true,2026-01-04 09:14:51.417506
+52,Which of the following correctly concatenates two strings 's1' and 's2'?,s1 + s2,"strcat(s1, s2)","strcpy(s1, s2)","stradd(s1, s2)",B,technical,arrays & strings,medium,true,2026-01-04 09:14:51.417506
+53,A pointer is:,A variable that stores the value of another variable,A variable that stores the address of another variable,A keyword used to create a function,A data type,B,technical,pointers / memory (basic concepts),easy,true,2026-01-04 09:14:51.417506
+54,What is a 'NULL' pointer in C?,A pointer that points to zero,A pointer that points to a random location,A pointer that points to the beginning of memory,A pointer that points to nowhere,D,technical,pointers / memory (basic concepts),medium,true,2026-01-04 09:14:51.417506
+55,Which operator is used to get the value at the address stored in a pointer?,&,*,->,.,B,technical,pointers / memory (basic concepts),easy,true,2026-01-04 09:14:51.417506
+56,Which function is used for dynamic memory allocation in C?,alloc(),malloc(),new(),create(),B,technical,pointers / memory (basic concepts),easy,true,2026-01-04 09:14:51.417506
+57,What is the size of a pointer in a 64-bit system?,4 bytes,8 bytes,2 bytes,Depends on the data type it points to,B,technical,pointers / memory (basic concepts),hard,true,2026-01-04 09:14:51.417506
+58,What is a dangling pointer?,A pointer pointing to a freed memory location,A pointer pointing to NULL,An uninitialized pointer,A pointer pointing to a global variable,A,technical,pointers / memory (basic concepts),hard,true,2026-01-04 09:14:51.417506
+59,"What is the output of the following C code? 
+int i = 5; 
+printf(""%d %d %d"", i++, i++, i++);",5 6 7,7 6 5,Compiler Dependent,5 5 5,C,technical,output-based / code tracing (c),hard,true,2026-01-04 09:14:51.417506
+60,"What will be the output? 
+#include <stdio.h>
+int main() {
+  int x = 10, y = 20;
+  if (x = y) printf(""Equal"");
+  else printf(""Not Equal"");
+  return 0;
+}",Equal,Not Equal,Runtime Error,Compilation Error,A,technical,output-based / code tracing (c),medium,true,2026-01-04 09:14:51.417506
+61,"What will be the output? 
+#include <stdio.h>
+int main() {
+  int a[] = {1, 2, 3};
+  int *p = a;
+  printf(""%d"", *(p+1));
+  return 0;
+}",1,2,3,Address of 2,B,technical,output-based / code tracing (c),medium,true,2026-01-04 09:14:51.417506
+62,"What will the following code print? 
+int main() {
+  int x = 5;
+  if (x < 10)
+    if (x > 5)
+      printf(""A"");
+    else
+      printf(""B"");
+  return 0;
+}",A,B,Nothing,Compiler error,B,technical,output-based / code tracing (c),medium,true,2026-01-04 09:14:51.417506
+63,"Predict the output: 
+#include <stdio.h>
+int main() {
+  int x = 0;
+  for (; x < 3; x++) ;
+  printf(""%d"", x);
+  return 0;
+}",0,1,2,3,D,technical,output-based / code tracing (c),medium,true,2026-01-04 09:14:51.417506
+64,"What will be the output of 
+printf(""%d"", sizeof(printf(""Hello"")));?",5,2,4,Depends on platform,C,technical,output-based / code tracing (c),hard,true,2026-01-04 09:14:51.417506
+65,"Output of: 
+int a = 10; 
+void f() { int a = 20; } 
+int main() { f(); printf(""%d"", a); return 0; }",10,20,Trash value,Error,A,technical,output-based / code tracing (c),medium,true,2026-01-04 09:14:51.417506
+66,"What is the output? 
+#include <stdio.h>
+int main() {
+  char *ptr = ""Placement"";
+  printf(""%c"", *&*ptr);
+  return 0;
+}",P,Placement,Address,Error,A,technical,output-based / code tracing (c),hard,true,2026-01-04 09:14:51.417506
+67,What is the time complexity of searching an element in a balanced binary search tree?,O(1),O(n),O(log n),O(n log n),C,technical,time complexity / basic concepts,medium,true,2026-01-04 09:14:51.417506
+68,Which notation is used to represent the upper bound of an algorithm's running time?,Big Omega,Big Theta,Big O,Little o,C,technical,time complexity / basic concepts,easy,true,2026-01-04 09:14:51.417506
+69,What is the time complexity of Quick Sort in the worst case?,O(n log n),O(n),O(n^2),O(log n),C,technical,time complexity / basic concepts,medium,true,2026-01-04 09:14:51.417506
+70,"If an algorithm's time complexity is O(1), it is called:",Linear time,Logarithmic time,Constant time,Exponential time,C,technical,time complexity / basic concepts,easy,true,2026-01-04 09:14:51.417506
