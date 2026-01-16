@@ -1,0 +1,549 @@
+{
+  "metadata": {
+    "total_questions": 200,
+    "aptitude_count": 80,
+    "technical_count": 120,
+    "difficulty_distribution": {
+      "easy": 68,
+      "medium": 86,
+      "hard": 46
+    }
+  },
+  "questions": [
+    {
+      "question_id": 1,
+      "question_text": "If a train travels 360 km in 4 hours, what is its speed in km/hr?",
+      "options": ["80 km/hr", "90 km/hr", "85 km/hr", "95 km/hr"],
+      "correct_option": "B",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 2,
+      "question_text": "A shopkeeper sells an article for Rs. 450 with a profit of 25%. What is the cost price?",
+      "options": ["Rs. 360", "Rs. 380", "Rs. 340", "Rs. 400"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 3,
+      "question_text": "If 15 workers can complete a job in 12 days, how many days will 20 workers take?",
+      "options": ["8 days", "9 days", "10 days", "11 days"],
+      "correct_option": "B",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 4,
+      "question_text": "What is 35% of 240?",
+      "options": ["84", "74", "94", "64"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 5,
+      "question_text": "The average of 5 numbers is 42. If one number is excluded, the average becomes 38. What is the excluded number?",
+      "options": ["58", "52", "48", "62"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 6,
+      "question_text": "A sum of Rs. 5000 amounts to Rs. 6050 in 2 years at simple interest. What is the rate of interest?",
+      "options": ["10%", "10.5%", "11%", "9.5%"],
+      "correct_option": "B",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 7,
+      "question_text": "Two pipes can fill a tank in 15 and 20 minutes respectively. How long will it take to fill the tank if both pipes are opened together?",
+      "options": ["8 min 34 sec", "7 min 30 sec", "9 min", "6 min 40 sec"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 8,
+      "question_text": "A car covers 432 km in 6 hours. If the speed is increased by 12 km/hr, how much time will it take to cover the same distance?",
+      "options": ["5 hours", "5.5 hours", "4.5 hours", "5.4 hours"],
+      "correct_option": "D",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 9,
+      "question_text": "The ratio of present ages of A and B is 4:5. After 5 years, their ages will be in ratio 5:6. What is A's present age?",
+      "options": ["20 years", "25 years", "15 years", "30 years"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 10,
+      "question_text": "A boat travels 24 km upstream in 3 hours and 24 km downstream in 2 hours. What is the speed of the boat in still water?",
+      "options": ["10 km/hr", "11 km/hr", "9 km/hr", "12 km/hr"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 11,
+      "question_text": "If the compound interest on a sum for 2 years at 10% per annum is Rs. 525, what is the principal?",
+      "options": ["Rs. 2500", "Rs. 2000", "Rs. 3000", "Rs. 2200"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 12,
+      "question_text": "A mixture contains milk and water in ratio 5:3. If 8 liters of water is added, the ratio becomes 5:5. How much milk is in the mixture?",
+      "options": ["20 liters", "25 liters", "15 liters", "30 liters"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 13,
+      "question_text": "Three partners A, B, and C invest in ratio 2:3:5. If total profit is Rs. 50000, what is C's share?",
+      "options": ["Rs. 25000", "Rs. 20000", "Rs. 15000", "Rs. 30000"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 14,
+      "question_text": "If selling price is Rs. 1920 after 20% discount on marked price, what is the marked price?",
+      "options": ["Rs. 2400", "Rs. 2200", "Rs. 2500", "Rs. 2300"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 15,
+      "question_text": "The LCM and HCF of two numbers are 180 and 6 respectively. If one number is 30, what is the other?",
+      "options": ["36", "42", "48", "54"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 16,
+      "question_text": "A can do a piece of work in 10 days, B in 15 days. They work together for 4 days. What fraction of work is left?",
+      "options": ["1/3", "2/3", "1/2", "1/4"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 17,
+      "question_text": "What is the area of a triangle with sides 5, 12, and 13?",
+      "options": ["30 sq units", "35 sq units", "25 sq units", "40 sq units"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 18,
+      "question_text": "If a number is increased by 20% and then decreased by 20%, what is the net change?",
+      "options": ["-4%", "0%", "-2%", "+4%"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 19,
+      "question_text": "The diagonal of a square is 10√2 cm. What is its area?",
+      "options": ["100 sq cm", "200 sq cm", "50 sq cm", "150 sq cm"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 20,
+      "question_text": "A man rows upstream at 6 km/hr and downstream at 10 km/hr. What is the speed of the stream?",
+      "options": ["2 km/hr", "3 km/hr", "4 km/hr", "1 km/hr"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 21,
+      "question_text": "If 6 men can complete a work in 8 days, how many men are needed to complete it in 4 days?",
+      "options": ["12", "10", "14", "8"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 22,
+      "question_text": "The product of two consecutive even numbers is 528. What is the smaller number?",
+      "options": ["22", "24", "20", "26"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 23,
+      "question_text": "A train 200m long crosses a platform 300m long in 25 seconds. What is its speed?",
+      "options": ["72 km/hr", "80 km/hr", "68 km/hr", "75 km/hr"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 24,
+      "question_text": "The cost price of 15 articles is equal to selling price of 12 articles. What is the profit percentage?",
+      "options": ["25%", "20%", "30%", "15%"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 25,
+      "question_text": "In how many ways can 5 books be arranged on a shelf?",
+      "options": ["120", "60", "24", "720"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 26,
+      "question_text": "The probability of getting a sum of 7 when two dice are thrown is:",
+      "options": ["1/6", "5/36", "1/9", "7/36"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 27,
+      "question_text": "What is the cube root of 3375?",
+      "options": ["15", "12", "18", "21"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 28,
+      "question_text": "A father is 4 times as old as his son. In 20 years, he will be twice as old. What is the son's current age?",
+      "options": ["10 years", "12 years", "8 years", "15 years"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 29,
+      "question_text": "A clock shows 3:00. What is the angle between the hour and minute hands?",
+      "options": ["90°", "120°", "60°", "180°"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 30,
+      "question_text": "If the radius of a circle is increased by 50%, by what percent does the area increase?",
+      "options": ["125%", "100%", "150%", "75%"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 31,
+      "question_text": "The sum of first 50 natural numbers is:",
+      "options": ["1275", "1250", "1300", "1225"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 32,
+      "question_text": "A cistern can be filled by a tap in 4 hours and emptied by an outlet in 8 hours. How long to fill if both are open?",
+      "options": ["8 hours", "6 hours", "10 hours", "12 hours"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "quantitative_aptitude",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 33,
+      "question_text": "All roses are flowers. Some flowers fade quickly. Which conclusion follows?",
+      "options": ["Some roses may fade quickly", "All roses fade quickly", "No roses fade quickly", "Some roses are not flowers"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 34,
+      "question_text": "If APPLE is coded as ELPPA, how is MANGO coded?",
+      "options": ["OGNAM", "ONAGM", "OMANG", "GOMAN"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 35,
+      "question_text": "A is B's sister. C is B's mother. D is C's father. E is D's mother. How is A related to D?",
+      "options": ["Granddaughter", "Daughter", "Sister", "Grandmother"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 36,
+      "question_text": "If 'sky' is called 'sea', 'sea' is called 'water', 'water' is called 'air', what do fish swim in?",
+      "options": ["Air", "Water", "Sea", "Sky"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 37,
+      "question_text": "Pointing to a man, a woman said 'His mother is the only daughter of my mother.' How is the woman related to the man?",
+      "options": ["Mother", "Aunt", "Sister", "Grandmother"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 38,
+      "question_text": "A, B, C, D, E are sitting in a row. B is between A and D. C is between E and A. Who is in the middle?",
+      "options": ["A", "B", "C", "D"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 39,
+      "question_text": "Statement: All doctors are intelligent. Some intelligent people are rich. Conclusion: Some doctors are rich.",
+      "options": ["Does not follow", "Follows", "Data inadequate", "None"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 40,
+      "question_text": "If South-East becomes North, which direction does North-West become?",
+      "options": ["South", "East", "West", "South-East"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 41,
+      "question_text": "A man walks 5km North, turns right walks 3km, turns right walks 5km. Which direction is he facing?",
+      "options": ["South", "North", "East", "West"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 42,
+      "question_text": "If in a code language COMPUTER is written as RFUVQNPC, how is PRINTER written?",
+      "options": ["SJOUFQS", "QSJOUFS", "QSJOUFQ", "SJUOFQS"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 43,
+      "question_text": "Which word does NOT belong: Apple, Mango, Potato, Orange?",
+      "options": ["Potato", "Apple", "Mango", "Orange"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 44,
+      "question_text": "In a family of 6, L is sister of M. M is husband of P. R is father of L. K is mother of M. T is son of P. How is T related to R?",
+      "options": ["Grandson", "Son", "Nephew", "Brother"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 45,
+      "question_text": "If × means +, + means ÷, ÷ means -, - means ×, then 8 × 7 - 8 + 4 ÷ 2 = ?",
+      "options": ["22", "20", "18", "24"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 46,
+      "question_text": "Arrange: 1. Key 2. Door 3. Lock 4. Room 5. Switch on light",
+      "options": ["1,3,2,4,5", "2,3,1,4,5", "1,2,3,4,5", "3,1,2,4,5"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 47,
+      "question_text": "A is taller than B. C is taller than A. D is taller than C. B is taller than E. Who is the shortest?",
+      "options": ["E", "B", "A", "C"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 48,
+      "question_text": "Statement: Some books are pens. All pens are pencils. Conclusion I: Some books are pencils. Conclusion II: Some pencils are books.",
+      "options": ["Both follow", "Only I follows", "Only II follows", "Neither follows"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 49,
+      "question_text": "Today is Monday. After 62 days, it will be?",
+      "options": ["Sunday", "Monday", "Saturday", "Tuesday"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 50,
+      "question_text": "If A + B means A is the daughter of B; A - B means A is the husband of B; A × B means A is the brother of B. What does P × Q - R mean?",
+      "options": ["P is brother-in-law of R", "P is brother of R", "P is uncle of R", "P is son of R"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 51,
+      "question_text": "If FRIEND is coded as HUMJTK, how is CANDLE coded?",
+      "options": ["EDRIRL", "DCPFNG", "ECSIMG", "DCPFMG"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 52,
+      "question_text": "Find the wrong number: 2, 5, 10, 17, 26, 37, 50, 64",
+      "options": ["64", "50", "37", "26"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 53,
+      "question_text": "A clock seen in a mirror shows 4:30. What is the actual time?",
+      "options": ["7:30", "8:30", "6:30", "5:30"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 54,
+      "question_text": "Complete the analogy: Doctor : Patient :: Lawyer : ?",
+      "options": ["Client", "Customer", "Accused", "Judge"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 55,
+      "question_text": "How many triangles are in a figure with 3 lines from one vertex of a triangle to the opposite side?",
+      "options": ["6", "4", "5", "7"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 56,
+      "question_text": "If in a certain code, RAIL is written as 5764 and ROAD is written as 5913, how is DIAL written?",
+      "options": ["1764", "1674", "1746", "1647"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "hard"
+    },
+    {
+      "question_id": 57,
+      "question_text": "In a row of students, Rahul is 15th from the left and 6th from the right. How many students are in the row?",
+      "options": ["20", "21", "19", "22"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 58,
+      "question_text": "Which figure will complete the pattern? (Square rotating 45° clockwise each step)",
+      "options": ["Square at 180°", "Square at 135°", "Square at 225°", "Square at 90°"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "logical_reasoning",
+      "difficulty": "medium"
+    },
+    {
+      "question_id": 59,
+      "question_text": "Complete: 2, 6, 12, 20, 30, ?",
+      "options": ["42", "40", "44", "38"],
+      "correct_option": "A",
+      "domain": "aptitude",
+      "topic": "pattern_series",
+      "difficulty": "easy"
+    },
+    {
+      "question_id": 60,
+      "question_text": "Find the next number: 1, 4, 9, 16, 25, ?",
+      "options": ["36", "30", "35", "49"],
+      "correct_option": "A",
+      "domain
