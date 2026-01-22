@@ -1,10 +1,43 @@
-<!DOCTYPE html>
+```html
+<!doctype html>
 <html>
+<!doctype html>
+<html lang="en">
+
 <head>
-  <title>IntelliPrep</title>
-  <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IntelliPrep - Adaptive Assessment Platform">
+  <title>IntelliPrep - Adaptive Assessment</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/canvas.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23667eea'>📚</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
+
 <body>
-  {% block content %}{% endblock %}
+  <header>
+    <h1><i class="fas fa-graduation-cap"></i> IntelliPrep - Adaptive Assessment</h1>
+    <nav>
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <a href="/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+      <a href="/auth/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a href="/auth/register"><i class="fas fa-user-plus"></i> Register</a>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    <p>&copy; 2026 IntelliPrep - Adaptive Assessment Platform | Powered by FastAPI & ML</p>
+  </footer>
+  <script src="/static/js/three-bg.js"></script>
+  <script src="/static/js/palette-switcher.js"></script>
 </body>
+
 </html>
+
+</html>
+```

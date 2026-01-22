@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/auth.css">
+
+<div class="auth-container">
+  <div class="auth-header">
+    <h2><i class="fas fa-edit"></i> Create Account</h2>
+    <p>Join IntelliPrep today</p>
+  </div>
+
+  {% if error %}
+  <div class="error-message">{{ error }}</div>
+  {% endif %}
+
+  <form method="post" action="/auth/register">
+    <div class="form-group">
+      <label class="form-label">Username</label>
+      <input type="text" name="username" class="form-input" placeholder="Choose your username" required
+        autocomplete="username" minlength="3" maxlength="50">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input type="password" name="password" class="form-input" placeholder="Create a strong password" required
+        autocomplete="new-password" minlength="6">
+    </div>
+
+    <button type="submit" class="submit-button btn-register"><i class="fas fa-user-plus"></i> Create Account</button>
+  </form>
+
+  <div class="auth-link">
+    <p>Already have an account?</p>
+    <a href="/auth/login">Sign In Here →</a>
+  </div>
+
+  <div class="requirements">
+    <strong>Password Requirements:</strong>
+    • At least 6 characters long<br>
+    • Can contain letters, numbers, and symbols
+  </div>
+</div>
+{% endblock %}

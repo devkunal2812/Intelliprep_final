@@ -1,0 +1,65 @@
+```html
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/complete.css">
+
+<div class="completion-container">
+  <div class="completion-badge">
+    <div class="completion-icon"><i class="fas fa-star" style="color: #ffc107;"></i></div>
+    <h2 class="completion-title">Test Complete!</h2>
+    <p class="completion-subtitle">Great job! Let's review your performance</p>
+  </div>
+
+  {% if summary %}
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="summary-value">{{ summary.attempted_count }}</div>
+      <div class="summary-label">Questions Attempted</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-value">{{ summary.username }}</div>
+      <div class="summary-label">User</div>
+    </div>
+  </div>
+
+  <div class="motivation-message">
+    <i class="fas fa-dumbbell"></i> You're making great progress! Keep practicing to improve your skills further.
+  </div>
+
+  {% if summary.attempted %}
+  <div class="questions-detail">
+    <h3><i class="fas fa-clipboard-list"></i> Questions Covered</h3>
+    <div>
+      {% for qid in summary.attempted %}
+      <div class="question-item">
+        <span>Question ID:</span>
+        <span class="question-id">{{ qid }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% else %}
+  <div class="no-summary">
+    <p><i class="fas fa-exclamation-triangle"></i> No session summary available.</p>
+    <p>Please try again or contact support if the issue persists.</p>
+  </div>
+  {% endif %}
+
+  <div class="action-buttons">
+    <button class="action-btn btn-primary"
+      onclick="window.location.href='/dashboard?user={% if summary %}{{ summary.username }}{% endif %}'">
+      <i class="fas fa-chart-line"></i> View Full Dashboard
+    </button>
+    <button class="action-btn btn-secondary"
+      onclick="window.location.href='/test/start?user={% if summary %}{{ summary.username }}{% endif %}'">
+      <i class="fas fa-redo"></i> Take Another Test
+    </button>
+    <button class="action-btn btn-secondary" onclick="window.location.href='/'">
+      <i class="fas fa-home"></i> Return Home
+    </button>
+  </div>
+</div>
+{% endblock %}
+```

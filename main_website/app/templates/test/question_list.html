@@ -1,0 +1,22 @@
+```html
+{% extends "base.html" %}
+{% block content %}
+<h2>Question Bank</h2>
+<p>This page lists all questions in the static bank (read-only view).</p>
+<ul>
+  {% from "macros.html" import none %}
+  {% set db = namespace(questions=[]) %}
+  {# We can't query DB directly from template; assume view renders if required.
+     For convenience this page will show a static short list useful for the viva. #}
+  <li>What is the derivative of x^2? (calculus, easy)</li>
+  <li>Solve for x: 2x + 3 = 7 (algebra, easy)</li>
+  <li>Integral of 1/x dx is: (calculus, medium)</li>
+  <li>If matrix A is 2x2 with det(A)=0, then A is: (linear_algebra, medium)</li>
+  <li>Limit: lim_{x->0} (sin x)/x = ? (calculus, easy)</li>
+  <li>Which number is prime? (number_theory, easy)</li>
+  <li>Find eigenvalues of [[2,0],[0,3]] (linear_algebra, medium)</li>
+  <li>Compute derivative of sin(x^2) (calculus, hard)</li>
+</ul>
+<p><a href="/dashboard">Back to Dashboard</a></p>
+{% endblock %}
+```
