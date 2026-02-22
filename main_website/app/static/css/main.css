@@ -1424,6 +1424,106 @@ a:hover {
   display: inline-block;
 }
 
+
+/* ── Floating Timer ──────────────────────────────────────────────────────────── */
+.floating-timer {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: .5rem 1rem .5rem .8rem;
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: background .3s, border-color .3s, color .3s;
+  user-select: none;
+}
+
+.floating-timer svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Last 10 minutes — blink red */
+.floating-timer.timer-warning {
+  background: var(--red-glow);
+  border-color: rgba(224, 88, 88, .4);
+  color: var(--red);
+  animation: blink-timer 1s step-start infinite;
+}
+
+.floating-timer.timer-warning svg {
+  color: var(--red);
+}
+
+@keyframes blink-timer {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .55;
+  }
+}
+
+.floating-timer.timer-expired {
+  background: rgba(224, 88, 88, .25);
+  border-color: var(--red);
+  color: var(--red);
+  animation: none;
+}
+
+/* ── Navigation Lock (during active test) ───────────────────────────────────── */
+.nav-link-disabled {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .6rem .85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  font-size: .875rem;
+  font-weight: 500;
+  cursor: not-allowed;
+  opacity: .5;
+  user-select: none;
+}
+
+.nav-link-disabled svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.logout-btn-disabled {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  cursor: not-allowed;
+  opacity: .4;
+  flex-shrink: 0;
+}
+
+.logout-btn-disabled svg {
+  width: 15px;
+  height: 15px;
+}
+
 /* ── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .sidebar {
@@ -1447,5 +1547,11 @@ a:hover {
 
   .topic-row {
     grid-template-columns: 130px 1fr 45px;
+  }
+  .floating-timer {
+    top: auto;
+    bottom: 1.25rem;
+    right: 1rem;
+    font-size: .9rem;
   }
 }

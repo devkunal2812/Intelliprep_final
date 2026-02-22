@@ -34,3 +34,7 @@ MAX_PER_TOPIC = int(TOTAL_QUESTIONS * MAX_TOPIC_RATIO)  # 7
 # Adaptive selection: target success-probability window
 ADAPTIVE_TARGET_LOW = 0.45
 ADAPTIVE_TARGET_HIGH = 0.75
+
+# Test duration
+TEST_DURATION_MINUTES = 45          # both calibration and adaptive
+TEST_DURATION_SECONDS = TEST_DURATION_MINUTES * 60

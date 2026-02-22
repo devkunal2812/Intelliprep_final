@@ -4,6 +4,12 @@
 
 {% block content %}
 <div class="page-header">
+    {% if request.query_params.get('error') == 'calibration_incomplete' %}
+    <div class="alert alert-error" style="width: 100%; grid-column: 1/-1;">
+        <strong>Test Discarded.</strong> Your calibration test was abandoned because it was submitted without answering
+        all questions. Please start a new test.
+    </div>
+    {% endif %}
     <div>
         <h1 class="page-title">Dashboard</h1>
         <p class="page-sub">{{ user_email }}</p>
@@ -47,10 +53,8 @@
         {% if in_progress_test %}
         <a href="/test/{{ in_progress_test[0] }}" class="btn btn-primary" id="btn-resume-test">Resume Test</a>
         {% else %}
-        <form method="POST" action="/test/start" id="form-start-calib">
-            <button type="submit" class="btn btn-primary" id="btn-start-calibration">Start Calibration Test {{
-                calibration_done + 1 }}</button>
-        </form>
+        <a href="/test/start-info" class="btn btn-primary" id="btn-start-calibration">Start Calibration Test {{
+            calibration_done + 1 }}</a>
         {% endif %}
     </div>
 </div>
@@ -128,9 +132,7 @@
     {% if in_progress_test %}
     <a href="/test/{{ in_progress_test[0] }}" class="btn btn-primary" id="btn-resume-adaptive">Resume Test</a>
     {% else %}
-    <form method="POST" action="/test/start" id="form-start-adaptive" style="display:inline">
-        <button type="submit" class="btn btn-primary" id="btn-start-adaptive">Start Adaptive Test</button>
-    </form>
+    <a href="/test/start-info" class="btn btn-primary" id="btn-start-adaptive">Start Adaptive Test</a>
     {% endif %}
     <a href="/analytics/" class="btn btn-outline" id="btn-analytics">View Analytics</a>
 </div>

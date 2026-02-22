@@ -48,7 +48,7 @@ def dashboard(request: Request):
         )
         calib_done = cur.fetchone()[0]
 
-        # Check for in-progress test to resume
+        # Check for in-progress test
         cur.execute(
             """
             SELECT id, test_type FROM main_tests
@@ -58,6 +58,10 @@ def dashboard(request: Request):
             (user_id,),
         )
         in_progress = cur.fetchone()
+        
+        # Enforce lock: If they have an active test, redirect them to it immediately
+        if in_progress:
+            return RedirectResponse(f"/test/{in_progress[0]}", status_code=302)
 
     finally:
         cur.close()

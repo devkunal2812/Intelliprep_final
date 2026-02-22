@@ -28,6 +28,19 @@ def analytics(request: Request):
     cur = conn.cursor()
 
     try:
+        # Enforce lock: if there is an in-progress test, redirect to it
+        cur.execute(
+            """
+            SELECT id FROM main_tests
+            WHERE auth_user_id = %s AND status = 'IN_PROGRESS'
+            ORDER BY start_time DESC LIMIT 1;
+            """,
+            (user_id,),
+        )
+        in_progress = cur.fetchone()
+        if in_progress:
+            return RedirectResponse(f"/test/{in_progress[0]}", status_code=302)
+
         # Per-difficulty accuracy
         cur.execute(
             """

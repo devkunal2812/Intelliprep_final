@@ -17,9 +17,7 @@
         </div>
 
         <form method="POST" action="/test/{{ test_id }}/submit" id="form-submit-test" onsubmit="return confirmSubmit()">
-            <button type="submit" class="btn btn-primary" id="btn-submit-test">
-                Submit Test
-            </button>
+            <button type="submit" class="btn btn-primary" id="btn-submit-test">Submit Test</button>
         </form>
     </div>
 </div>
@@ -42,11 +40,20 @@
 </div>
 
 <div class="section-card note-card" id="submit-note">
+    {% if test_type == 'calibration' %}
+    <p>
+        <strong>Calibration Test:</strong> All {{ total_questions }} questions <strong>must</strong> be answered before
+        submission.
+        Submitting with unanswered questions will <strong>discard</strong> this test attempt.
+        Use the grid above to navigate to unanswered questions.
+    </p>
+    {% else %}
     <p>
         <strong>Note:</strong> You can answer questions in any order.
         Use the grid above to navigate. Click <em>Submit Test</em> when you're done.
         Unanswered questions will be counted as skipped.
     </p>
+    {% endif %}
 </div>
 
 <script>
@@ -54,7 +61,11 @@
         var unanswered = {{ total_questions - answered_count
     }};
     if (unanswered > 0) {
-        return confirm(unanswered + ' question(s) are unanswered. Submit anyway?');
+        {% if test_type == 'calibration' %}
+        return confirm(unanswered + ' question(s) are unanswered. If you submit now, this calibration test will be discarded and you will have to give it again. Submit anyway?');
+        {% else %}
+        return confirm(unanswered + ' question(s) are unanswered. Submit anyway? Unanswered questions count as wrong.');
+        {% endif %}
     }
     return true;
 }
