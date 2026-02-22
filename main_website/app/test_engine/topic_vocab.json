@@ -1,0 +1,11 @@
+{
+  "quantitative aptitude": 0,
+  "logical reasoning": 1,
+  "pattern / series / odd-one-out": 2,
+  "basic verbal / reasoning": 3,
+  "c language basics (syntax, control flow)": 4,
+  "arrays & strings": 5,
+  "pointers / memory (basic concepts)": 6,
+  "output-based / code tracing (c)": 7,
+  "time complexity / basic concepts": 8
+}

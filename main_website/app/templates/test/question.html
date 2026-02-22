@@ -1,32 +1,83 @@
-```html
 {% extends "base.html" %}
+{% block title %}Question {{ index + 1 }} — IntelliPrep{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="/static/css/question.css">
-
-<div class="test-container" data-session-id="{{ session_id }}">
-  <div class="test-header">
-    <h2><i class="fas fa-bullseye"></i> Adaptive Assessment Test</h2>
-    <div class="session-info">
-      <div class="info-item">
-        <span class="info-label">Session:</span>
-        <span class="info-value">{{ session_id }}</span>
-      </div>
-      <div class="info-item">
-        <span class="info-label">Time Elapsed:</span>
-        <span class="info-value" id="timer">00:00</span>
-      </div>
+<div class="test-header">
+    <div class="test-breadcrumb">
+        <a href="/test/{{ test_id }}" class="breadcrumb-link" id="link-back-to-list">← Overview</a>
     </div>
-  </div>
-
-  <div class="progress-bar">
-    <div class="progress-fill" id="progress" style="width: 0%"></div>
-  </div>
-
-  <div id="question-area">
-    <div class="loading">Loading your first question...</div>
-  </div>
+    <div class="test-progress">
+        <div class="progress-track">
+            <div class="progress-fill" style="width: {{ ((answered_count) / total_questions * 100)|round(0) }}%"></div>
+        </div>
+        <span class="progress-label">{{ answered_count }}/{{ total_questions }}</span>
+    </div>
 </div>
 
-<script src="/static/js/question.js"></script>
+<div class="question-card" id="question-card">
+    <div class="question-meta">
+        <span class="q-number">Question {{ index + 1 }} of {{ total_questions }}</span>
+        {% if is_answered %}
+        <span class="q-status q-status-answered">Answered</span>
+        {% else %}
+        <span class="q-status q-status-unanswered">Not answered</span>
+        {% endif %}
+    </div>
+
+    <p class="question-text" id="question-text">{{ question_text }}</p>
+
+    {% if is_answered %}
+    <!-- Read-only view for answered questions -->
+    <div class="options-list" id="options-list">
+        {% for key, text in options.items() %}
+        <div class="option-item {% if key == selected_option %}option-selected{% endif %}" id="opt-{{ key }}">
+            <span class="option-key">{{ key }}</span>
+            <span class="option-text">{{ text }}</span>
+            {% if key == selected_option %}
+            <span class="option-check">✓</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <p class="answered-note">Your answer has been recorded. You can change questions from the overview.</p>
+
+    {% else %}
+    <!-- Answer form -->
+    <form method="POST" action="/test/{{ test_id }}/q/{{ index }}" id="answer-form">
+        <div class="options-list" id="options-list">
+            {% for key, text in options.items() %}
+            <label class="option-item option-interactive" id="opt-label-{{ key }}" for="opt-{{ key }}">
+                <input type="radio" name="selected_option" id="opt-{{ key }}" value="{{ key }}" {% if
+                    selected_option==key %}checked{% endif %} required />
+                <span class="option-key">{{ key }}</span>
+                <span class="option-text">{{ text }}</span>
+                <span class="option-indicator"></span>
+            </label>
+            {% endfor %}
+        </div>
+
+        <div class="question-footer">
+            <button type="submit" class="btn btn-primary" id="btn-save-next">
+                Save &amp; Next
+            </button>
+        </div>
+    </form>
+    {% endif %}
+</div>
+
+<div class="question-nav" id="question-nav">
+    {% if index > 0 %}
+    <a href="/test/{{ test_id }}/q/{{ index - 1 }}" class="btn btn-outline" id="btn-prev">← Prev</a>
+    {% else %}
+    <span></span>
+    {% endif %}
+
+    <a href="/test/{{ test_id }}" class="btn btn-ghost" id="btn-to-overview">Overview</a>
+
+    {% if index < total_questions - 1 %} <a href="/test/{{ test_id }}/q/{{ index + 1 }}" class="btn btn-outline"
+        id="btn-next">Next →</a>
+        {% else %}
+        <a href="/test/{{ test_id }}" class="btn btn-outline" id="btn-to-submit">Finish →</a>
+        {% endif %}
+</div>
 {% endblock %}
-```

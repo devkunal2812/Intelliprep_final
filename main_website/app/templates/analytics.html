@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}Analytics — IntelliPrep{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Analytics</h1>
+        <p class="page-sub">Performance breakdown across all tests</p>
+    </div>
+    <a href="/dashboard" class="btn btn-outline" id="btn-back-dash">← Dashboard</a>
+</div>
+
+<!-- ── Top Stats ──────────────────────────────────────────────────────────── -->
+<div class="stats-grid" id="analytics-stats">
+    <div class="stat-card" id="stat-acc">
+        <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="stat-value">{{ overall_accuracy }}%</div>
+            <div class="stat-label">Overall Accuracy</div>
+        </div>
+    </div>
+    <div class="stat-card" id="stat-time-a">
+        <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="stat-value">{{ avg_time_sec }}s</div>
+            <div class="stat-label">Avg Time / Question</div>
+        </div>
+    </div>
+    <div class="stat-card" id="stat-tests-a">
+        <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+            </svg></div>
+        <div class="stat-body">
+            <div class="stat-value">{{ tests_completed }}</div>
+            <div class="stat-label">Tests Completed</div>
+        </div>
+    </div>
+</div>
+
+<div class="analytics-grid" id="analytics-grid">
+
+    <!-- ── Topic Accuracy ── -->
+    <div class="section-card" id="topic-section">
+        <h2 class="section-title-sm">Topic Accuracy</h2>
+        {% if topic_data %}
+        <div class="topic-list">
+            {% for item in topic_data %}
+            <div class="topic-row">
+                <span class="topic-name">{{ item.topic }}</span>
+                <div class="topic-bar-track">
+                    <div class="topic-bar {% if item.accuracy < 40 %}bar-low{% elif item.accuracy < 70 %}bar-mid{% else %}bar-high{% endif %}"
+                        style="width: {{ item.accuracy }}%"></div>
+                </div>
+                <span class="topic-val">{{ item.accuracy }}%</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty-state">No data yet. Complete a test first.</p>
+        {% endif %}
+    </div>
+
+    <!-- ── Difficulty Breakdown ── -->
+    <div class="section-card" id="difficulty-section">
+        <h2 class="section-title-sm">Difficulty Breakdown</h2>
+        {% set diffs = ['easy', 'medium', 'hard'] %}
+        {% for d in diffs %}
+        {% if d in difficulty_data %}
+        {% set item = difficulty_data[d] %}
+        <div class="diff-row" id="diff-{{ d }}">
+            <div class="diff-label-wrap">
+                <span class="diff-label diff-{{ d }}">{{ d|capitalize }}</span>
+                <span class="diff-count">{{ item.correct }}/{{ item.total }}</span>
+            </div>
+            <div class="topic-bar-track">
+                <div class="topic-bar {% if item.accuracy < 40 %}bar-low{% elif item.accuracy < 70 %}bar-mid{% else %}bar-high{% endif %}"
+                    style="width: {{ item.accuracy }}%"></div>
+            </div>
+            <span class="topic-val">{{ item.accuracy }}%</span>
+        </div>
+        {% else %}
+        <div class="diff-row" id="diff-{{ d }}">
+            <div class="diff-label-wrap">
+                <span class="diff-label diff-{{ d }}">{{ d|capitalize }}</span>
+                <span class="diff-count">—</span>
+            </div>
+            <div class="topic-bar-track">
+                <div class="topic-bar" style="width:0%"></div>
+            </div>
+            <span class="topic-val">—</span>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+
+<!-- ── Test Trend ─────────────────────────────────────────────────────────── -->
+<div class="section-card" id="trend-section">
+    <h2 class="section-title-sm">Accuracy Trend (Last {{ test_trend|length }} Tests)</h2>
+    {% if test_trend %}
+    <div class="trend-chart" id="trend-chart">
+        {% for t in test_trend %}
+        <div class="trend-col" id="trend-col-{{ loop.index }}">
+            <div class="trend-bar-wrap">
+                <div class="trend-bar {% if t.test_type == 'calibration' %}trend-calib{% else %}trend-adaptive{% endif %}"
+                    style="height: {{ t.accuracy }}%" title="{{ t.accuracy }}%"></div>
+            </div>
+            <span class="trend-label">{{ t.label }}</span>
+            <span class="trend-type">{{ 'C' if t.test_type == 'calibration' else 'A' }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="trend-legend">
+        <span><span class="legend-dot trend-calib-dot"></span> Calibration</span>
+        <span><span class="legend-dot trend-adaptive-dot"></span> Adaptive</span>
+    </div>
+    {% else %}
+    <p class="empty-state">Test history will appear here after you complete tests.</p>
+    {% endif %}
+</div>
+{% endblock %}

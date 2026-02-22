@@ -1,44 +1,28 @@
-from psycopg2.pool import SimpleConnectionPool
-from contextlib import contextmanager
+"""
+Psycopg2 connection pool for direct Postgres queries.
+
+Used mainly by the question-generation engine which needs efficient
+random-sampling SQL that is awkward via the Supabase REST API.
+"""
+
+import psycopg2
+from psycopg2 import pool
 from app.config import DATABASE_URL
 
-_POOL = None
+_pool: pool.ThreadedConnectionPool | None = None
 
-POOL_MIN = 1
-POOL_MAX = 10
 
 def init_pool():
-    global _POOL
-    if _POOL is None:
-        _POOL = SimpleConnectionPool(
-            POOL_MIN,
-            POOL_MAX,
-            dsn=DATABASE_URL
-        )
+    global _pool
+    _pool = pool.ThreadedConnectionPool(minconn=2, maxconn=10, dsn=DATABASE_URL)
+
 
 def get_connection():
-    if _POOL is None:
+    if _pool is None:
         init_pool()
-    return _POOL.getconn()
+    return _pool.getconn()
+
 
 def put_connection(conn):
-    _POOL.putconn(conn)
-
-@contextmanager
-def get_db_cursor():
-    conn = get_connection()
-    try:
-        cur = conn.cursor()
-        yield cur
-        conn.commit()
-    except Exception:
-        conn.rollback()
-        raise
-    finally:
-        put_connection(conn)
-
-def close_all():
-    global _POOL
-    if _POOL:
-        _POOL.closeall()
-        _POOL = None
+    if _pool is not None:
+        _pool.putconn(conn)

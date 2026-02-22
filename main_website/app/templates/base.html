@@ -1,43 +1,80 @@
-```html
-<!doctype html>
-<html>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="IntelliPrep - Adaptive Assessment Platform">
-  <title>IntelliPrep - Adaptive Assessment</title>
-  <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="stylesheet" href="/static/css/canvas.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23667eea'>📚</text></svg>">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}IntelliPrep{% endblock %}</title>
+    <meta name="description"
+        content="{% block meta_desc %}IntelliPrep — Adaptive Technical Assessment & Skill Development Platform{% endblock %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    {% block head %}{% endblock %}
 </head>
 
 <body>
-  <header>
-    <h1><i class="fas fa-graduation-cap"></i> IntelliPrep - Adaptive Assessment</h1>
-    <nav>
-      <a href="/"><i class="fas fa-home"></i> Home</a>
-      <a href="/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
-      <a href="/auth/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-      <a href="/auth/register"><i class="fas fa-user-plus"></i> Register</a>
-    </nav>
-  </header>
-  <main>
-    {% block content %}{% endblock %}
-  </main>
-  <footer>
-    <p>&copy; 2026 IntelliPrep - Adaptive Assessment Platform | Powered by FastAPI & ML</p>
-  </footer>
-  <script src="/static/js/three-bg.js"></script>
-  <script src="/static/js/palette-switcher.js"></script>
+
+    {% block body %}
+    <div class="app-shell">
+        <!-- Sidebar nav -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon">IP</span>
+                <span class="brand-text">IntelliPrep</span>
+            </div>
+
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="/dashboard" class="nav-link {% if request.url.path == '/dashboard' %}active{% endif %}"
+                        id="nav-dashboard">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <rect x="3" y="3" width="7" height="7" rx="1" />
+                            <rect x="14" y="3" width="7" height="7" rx="1" />
+                            <rect x="3" y="14" width="7" height="7" rx="1" />
+                            <rect x="14" y="14" width="7" height="7" rx="1" />
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/analytics/" class="nav-link {% if '/analytics' in request.url.path %}active{% endif %}"
+                        id="nav-analytics">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="user-badge" id="user-badge">
+                    <div class="user-avatar">{{ (user_email or 'U')[0].upper() }}</div>
+                    <span class="user-email">{{ user_email or '' }}</span>
+                </div>
+                <a href="/auth/logout" class="logout-btn" id="btn-logout" title="Log out">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    {% endblock %}
+
+    <script src="/static/js/main.js"></script>
+    {% block scripts %}{% endblock %}
 </body>
 
 </html>
-
-</html>
-```

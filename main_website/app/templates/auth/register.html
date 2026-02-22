@@ -1,42 +1,47 @@
-{% extends "base.html" %}
+{% extends "auth_base.html" %}
+{% block title %}Register — IntelliPrep{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="/static/css/auth.css">
+<div class="auth-card" id="register-card">
+    <h2 class="card-title">Create Account</h2>
+    <p class="card-sub">Start your adaptive learning journey</p>
 
-<div class="auth-container">
-  <div class="auth-header">
-    <h2><i class="fas fa-edit"></i> Create Account</h2>
-    <p>Join IntelliPrep today</p>
-  </div>
+    {% if error %}
+    <div class="alert alert-error" id="alert-error" role="alert">{{ error }}</div>
+    {% endif %}
 
-  {% if error %}
-  <div class="error-message">{{ error }}</div>
-  {% endif %}
+    <form method="POST" action="/auth/register" id="register-form" autocomplete="on">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        </div>
 
-  <form method="post" action="/auth/register">
-    <div class="form-group">
-      <label class="form-label">Username</label>
-      <input type="text" name="username" class="form-input" placeholder="Choose your username" required
-        autocomplete="username" minlength="3" maxlength="50">
-    </div>
+        <div class="form-group">
+            <label for="password">Password <span class="hint">(min. 6 characters)</span></label>
+            <div class="input-with-toggle">
+                <input type="password" id="password" name="password" placeholder="••••••••" required
+                    autocomplete="new-password" minlength="6" />
+                <button type="button" class="toggle-pw" id="toggle-pw-btn" aria-label="Toggle visibility">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </button>
+            </div>
+        </div>
 
-    <div class="form-group">
-      <label class="form-label">Password</label>
-      <input type="password" name="password" class="form-input" placeholder="Create a strong password" required
-        autocomplete="new-password" minlength="6">
-    </div>
+        <div class="form-group">
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="••••••••" required
+                autocomplete="new-password" minlength="6" />
+        </div>
 
-    <button type="submit" class="submit-button btn-register"><i class="fas fa-user-plus"></i> Create Account</button>
-  </form>
+        <button type="submit" class="btn btn-primary btn-full" id="btn-register">Create Account</button>
+    </form>
 
-  <div class="auth-link">
-    <p>Already have an account?</p>
-    <a href="/auth/login">Sign In Here →</a>
-  </div>
-
-  <div class="requirements">
-    <strong>Password Requirements:</strong>
-    • At least 6 characters long<br>
-    • Can contain letters, numbers, and symbols
-  </div>
+    <p class="auth-switch">
+        Already have an account?
+        <a href="/auth/login" id="link-to-login">Sign in</a>
+    </p>
 </div>
 {% endblock %}
