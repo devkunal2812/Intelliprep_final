@@ -5,3 +5,4 @@ python-dotenv
 python-multipart
 supabase
 psycopg2-binary
+numpy

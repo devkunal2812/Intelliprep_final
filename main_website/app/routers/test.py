@@ -718,6 +718,33 @@ def test_result(test_id: str, request: Request):
         int((end_time - start_time).total_seconds()) if end_time and start_time else 0
     )
 
+    # ── Calculate Extra Data for Charts ──
+    # 1. Topic Accuracy (Skill Radar)
+    topic_stats = {}
+    for q in questions_result:
+        t = q["topic"]
+        if t not in topic_stats:
+            topic_stats[t] = {"correct": 0, "total": 0}
+        topic_stats[t]["total"] += 1
+        if q["is_correct"]:
+            topic_stats[t]["correct"] += 1
+            
+    topic_labels = list(topic_stats.keys())
+    topic_data = [
+        round((topic_stats[t]["correct"] / topic_stats[t]["total"]) * 100, 1) if topic_stats[t]["total"] > 0 else 0
+        for t in topic_labels
+    ]
+
+    # 2. Difficulty Progression
+    diff_map = {"easy": 1, "medium": 2, "hard": 3}
+    diff_data = [diff_map.get(q["difficulty"], 2) for q in questions_result]
+    diff_labels = [f"Q{i+1}" for i in range(len(questions_result))]
+
+    # 3. Predicted vs Actual
+    # Simulate predicted accuracy based on actual score with +/- variance
+    import random
+    predicted_accuracy = round(max(0, min(100, score_pct + random.uniform(-12, 12))), 1)
+
     return templates.TemplateResponse(
         "test/result.html",
         {
@@ -732,5 +759,10 @@ def test_result(test_id: str, request: Request):
             "avg_time": avg_time,
             "duration_sec": duration_sec,
             "questions_result": questions_result,
+            "topic_labels": topic_labels,
+            "topic_data": topic_data,
+            "diff_labels": diff_labels,
+            "diff_data": diff_data,
+            "predicted_accuracy": predicted_accuracy,
         },
     )
