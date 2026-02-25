@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+{% block title %}Test Result — IntelliPrep{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div>
+        <h1 class="page-title">Test Complete</h1>
+        <p class="page-sub">
+            {% if test_type == 'calibration' %}Calibration Test{% else %}Adaptive Test{% endif %}
+        </p>
+    </div>
+    <a href="/dashboard" class="btn btn-outline" id="btn-back-dashboard">← Dashboard</a>
+</div>
+
+<!-- ── Score Summary ──────────────────────────────────────────────────────── -->
+<div class="result-summary" id="result-summary">
+    <div class="score-circle-wrap">
+        <svg class="score-ring" viewBox="0 0 120 120">
+            <circle class="ring-bg" cx="60" cy="60" r="52" />
+            <circle class="ring-fill" cx="60" cy="60" r="52"
+                stroke-dasharray="{{ (score_pct / 100 * 326.73)|round(2) }} 326.73" stroke-dashoffset="81.68" />
+        </svg>
+        <div class="score-inner">
+            <span class="score-number" id="score-display">{{ score_pct }}%</span>
+            <span class="score-sub">Score</span>
+        </div>
+    </div>
+
+    <div class="result-stats">
+        <div class="rstat" id="rstat-correct">
+            <div class="rstat-val correct">{{ correct }}</div>
+            <div class="rstat-label">Correct</div>
+        </div>
+        <div class="rstat" id="rstat-wrong">
+            <div class="rstat-val wrong">{{ answered - correct }}</div>
+            <div class="rstat-label">Wrong</div>
+        </div>
+        <div class="rstat" id="rstat-skipped">
+            <div class="rstat-val skipped">{{ total - answered }}</div>
+            <div class="rstat-label">Skipped</div>
+        </div>
+        <div class="rstat" id="rstat-time">
+            <div class="rstat-val">{{ avg_time }}s</div>
+            <div class="rstat-label">Avg Time</div>
+        </div>
+        <div class="rstat" id="rstat-duration">
+            <div class="rstat-val">{{ (duration_sec // 60) }}m {{ (duration_sec % 60) }}s</div>
+            <div class="rstat-label">Duration</div>
+        </div>
+    </div>
+</div>
+
+<!-- ── Analytics & Charts ─────────────────────────────────────────────────── -->
+<div class="analytics-grid"
+    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+    <!-- 1. Predicted vs Actual Accuracy -->
+    <div class="section-card" id="analytics-accuracy">
+        <h2 class="section-title-sm" style="margin-bottom: 1rem;">Accuracy Prediction</h2>
+        <div style="display: flex; flex-direction: column; gap: 1rem; position: relative;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.04); padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.08);">
+                <span style="color: var(--text-muted); font-size: 0.9rem;">Predicted Accuracy</span>
+                <span style="font-weight: 600; font-size: 1.1rem;">{{ predicted_accuracy }}%</span>
+            </div>
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; background: rgba(99,102,241,0.1); padding: 1rem; border-radius: 0.5rem; border: 1px solid rgba(99,102,241,0.3);">
+                <span style="color: #818cf8; font-size: 0.9rem;">Actual Accuracy</span>
+                <span style="font-weight: 600; font-size: 1.1rem; color: #818cf8;">{{ score_pct }}%</span>
+            </div>
+            <div style="margin-top: 0.5rem;">
+                <canvas id="accuracyChart" height="150"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Difficulty Progression Graph -->
+    <div class="section-card" id="analytics-difficulty">
+        <h2 class="section-title-sm" style="margin-bottom: 1rem;">Difficulty Progression</h2>
+        <div style="position: relative; height: 260px; width: 100%;">
+            <canvas id="difficultyChart"></canvas>
+        </div>
+    </div>
+
+    <!-- 3. Skill Radar Chart -->
+    <div class="section-card" id="analytics-radar">
+        <h2 class="section-title-sm" style="margin-bottom: 1rem;">Skill Radar</h2>
+        <div style="position: relative; height: 260px; width: 100%; display: flex; justify-content: center;">
+            <canvas id="radarChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Chart.defaults.color = '#717899';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+
+        // 1. Accuracy Bar Chart
+        const ctxAcc = document.getElementById('accuracyChart').getContext('2d');
+        new Chart(ctxAcc, {
+            type: 'bar',
+            data: {
+                labels: ['Predicted', 'Actual'],
+                datasets: [{
+                    data: [{{ predicted_accuracy }}, {{ score_pct }}],
+            backgroundColor: ['rgba(255, 255, 255, 0.15)', 'rgba(99, 102, 241, 0.6)'],
+            borderColor: ['rgba(255, 255, 255, 0.3)', 'rgba(99, 102, 241, 1)'],
+            borderWidth: 1,
+            borderRadius: 4
+        }]
+        },
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' } },
+            x: { grid: { display: false } }
+        }
+    }
+    });
+
+    // 2. Difficulty Progression Line Chart
+    const diffLabels = {{ diff_labels | tojson | safe }};
+    const diffData = {{ diff_data | tojson | safe }};
+    const ctxDiff = document.getElementById('difficultyChart').getContext('2d');
+    new Chart(ctxDiff, {
+        type: 'line',
+        data: {
+            labels: diffLabels,
+            datasets: [{
+                label: 'Difficulty Level',
+                data: diffData,
+                borderColor: '#34d399',
+                backgroundColor: 'rgba(52, 211, 153, 0.1)',
+                borderWidth: 2,
+                tension: 0.3,
+                fill: true,
+                pointBackgroundColor: '#34d399',
+                pointRadius: 3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: {
+                    min: 0.5, max: 3.5,
+                    ticks: {
+                        callback: function (value) {
+                            if (value === 1) return 'Easy';
+                            if (value === 2) return 'Medium';
+                            if (value === 3) return 'Hard';
+                            return '';
+                        }, stepSize: 1
+                    },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                },
+                x: { grid: { display: false }, ticks: { maxTicksLimit: 10 } }
+            }
+        }
+    });
+
+    // 3. Skill Radar Chart
+    const topicLabels = {{ topic_labels | tojson | safe }};
+    const topicData = {{ topic_data | tojson | safe }};
+    const ctxRadar = document.getElementById('radarChart').getContext('2d');
+
+    // Fallback if no topic data
+    if (topicLabels.length === 0) {
+        topicLabels.push('General');
+        topicData.push({{ score_pct }});
+    }
+
+    new Chart(ctxRadar, {
+        type: 'radar',
+        data: {
+            labels: topicLabels,
+            datasets: [{
+                label: 'Accuracy %',
+                data: topicData,
+                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                borderColor: '#10b981',
+                pointBackgroundColor: '#10b981',
+                pointBorderColor: '#fff',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                r: {
+                    angleLines: { color: 'rgba(255,255,255,0.1)' },
+                    grid: { color: 'rgba(255,255,255,0.1)' },
+                    pointLabels: { color: '#e2e8f0', font: { size: 11 } },
+                    ticks: { display: false, min: 0, max: 100, stepSize: 20 }
+                }
+            }
+        }
+    });
+});
+</script>
+
+<!-- ── Question Review ────────────────────────────────────────────────────── -->
+<div class="section-card" id="question-review">
+    <div class="section-header">
+        <h2>Question Review</h2>
+        <span class="hint">Expand each question to see details</span>
+    </div>
+
+    <div class="review-list" id="review-list">
+        {% for q in questions_result %}
+        <details
+            class="review-item {% if q.skipped %}review-skipped{% elif q.is_correct %}review-correct{% else %}review-wrong{% endif %}"
+            id="review-q-{{ q.num }}">
+            <summary class="review-summary">
+                <span class="review-num">Q{{ q.num }}</span>
+                <span class="review-text-preview">{{ q.question_text[:80] }}{% if q.question_text|length > 80 %}…{%
+                    endif %}</span>
+                <span class="review-badge">
+                    {% if q.skipped %}
+                    <span class="badge badge-skip">Skipped</span>
+                    {% elif q.is_correct %}
+                    <span class="badge badge-correct">✓ Correct</span>
+                    {% else %}
+                    <span class="badge badge-wrong">✗ Wrong</span>
+                    {% endif %}
+                </span>
+                <span class="review-meta">{{ q.difficulty }} · {{ q.topic }}</span>
+            </summary>
+
+            <div class="review-body">
+                <p class="review-qtext">{{ q.question_text }}</p>
+                <div class="review-options">
+                    {% for key, text in q.options.items() %}
+                    <div class="review-opt
+            {% if key == q.correct_option %}review-opt-correct{% endif %}
+            {% if key == q.selected_option and not q.is_correct %}review-opt-wrong{% endif %}
+          ">
+                        <span class="review-key">{{ key }}</span>
+                        <span>{{ text }}</span>
+                        {% if key == q.correct_option %}<span class="opt-label">✓ Correct</span>{% endif %}
+                        {% if key == q.selected_option and not q.is_correct %}<span class="opt-label">Your
+                            answer</span>{% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if not q.skipped %}
+                <p class="review-time">⏱ {{ q.time_taken_sec }}s</p>
+                {% endif %}
+            </div>
+        </details>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ── Actions ────────────────────────────────────────────────────────────── -->
+<div class="action-row" id="result-actions">
+    <form method="POST" action="/test/start" id="form-new-test">
+        <button type="submit" class="btn btn-primary" id="btn-new-test">Start New Test</button>
+    </form>
+    <a href="/dashboard" class="btn btn-outline" id="btn-go-dashboard">Go to Dashboard</a>
+</div>
+{% endblock %}
