@@ -135,9 +135,8 @@ def start_info(request: Request):
         put_connection(conn)
 
     response = templates.TemplateResponse(
-        "test/start.html",
+        request, "test/start.html",
         {
-            "request": request,
             "user_email": user.email,
             "test_type": test_type,
             "total_questions": TOTAL_QUESTIONS,
@@ -276,9 +275,8 @@ def question_list(test_id: str, request: Request):
     all_answered   = answered_count == TOTAL_QUESTIONS
 
     response = templates.TemplateResponse(
-        "test/question_list.html",
+        request, "test/question_list.html",
         {
-            "request": request,
             "user_email": user.email,
             "test_id": test_id,
             "test_type": test_type,
@@ -393,9 +391,8 @@ def get_question(test_id: str, index: int, request: Request):
         put_connection(conn)
 
     response = templates.TemplateResponse(
-        "test/question.html",
+        request, "test/question.html",
         {
-            "request": request,
             "user_email": user.email,
             "test_id": test_id,
             "test_type": test_type,
@@ -745,9 +742,8 @@ def test_result(test_id: str, request: Request):
     predicted_accuracy = round(max(0, min(100, score_pct + random.uniform(-12, 12))), 1)
 
     return templates.TemplateResponse(
-        "test/result.html",
+        request, "test/result.html",
         {
-            "request": request,
             "user_email": user.email,
             "test_id": test_id,
             "test_type": test_type,

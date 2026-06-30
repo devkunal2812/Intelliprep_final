@@ -114,9 +114,8 @@ def analytics(request: Request):
     ]
 
     return templates.TemplateResponse(
-        "analytics.html",
+        request, "analytics.html",
         {
-            "request": request,
             "user_email": user.email,
             "skill": skill,
             "overall_accuracy": round(skill.get("overall_accuracy", 0) * 100, 1),

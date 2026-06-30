@@ -77,9 +77,8 @@ def dashboard(request: Request):
     ]
 
     return templates.TemplateResponse(
-        "dashboard.html",
+        request, "dashboard.html",
         {
-            "request": request,
             "user_email": user.email,
             "in_calibration": in_calibration,
             "calibration_done": calibration_progress,
@@ -88,6 +87,6 @@ def dashboard(request: Request):
             "avg_time_sec": round(skill.get("avg_time_sec", 0), 1),
             "tests_completed": tests_completed,
             "topic_data": topic_data,
-            "in_progress_test": in_progress,  # (id, type) or None
+            "in_progress_test": in_progress,
         },
     )

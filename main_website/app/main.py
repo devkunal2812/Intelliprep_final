@@ -35,5 +35,5 @@ def root(request: Request):
 @app.exception_handler(404)
 async def not_found(request: Request, exc):
     return templates.TemplateResponse(
-        "errors/404.html", {"request": request}, status_code=404
+        request, "errors/404.html", status_code=404
     )
