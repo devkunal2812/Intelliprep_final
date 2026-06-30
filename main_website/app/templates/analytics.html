@@ -137,8 +137,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        Chart.defaults.color = '#717899';
-        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#505A4B';
+        Chart.defaults.font.family = "'DM Sans', sans-serif";
 
         // ── Accuracy Trend Chart ──────────────────────────────────────────
         {% if test_trend %}
@@ -147,7 +147,7 @@
         const trendTypes   = {{ test_trend | map(attribute='test_type') | list | tojson | safe }};
 
         const pointColors = trendTypes.map(t =>
-            t === 'calibration' ? '#e8a23a' : '#6c8be8'
+            t === 'calibration' ? '#b07d2a' : '#27391D'
         );
 
         new Chart(document.getElementById('trendChart').getContext('2d'), {
@@ -157,8 +157,8 @@
                 datasets: [{
                     label: 'Accuracy %',
                     data: trendValues,
-                    borderColor: '#6c8be8',
-                    backgroundColor: 'rgba(108, 139, 232, 0.08)',
+                    borderColor: '#27391D',
+                    backgroundColor: 'rgba(39, 57, 29, 0.07)',
                     borderWidth: 2,
                     tension: 0.35,
                     fill: true,
@@ -186,10 +186,10 @@
                     y: {
                         beginAtZero: true,
                         max: 100,
-                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        grid: { color: 'rgba(39,57,29,0.08)' },
                         ticks: { callback: v => v + '%' }
                     },
-                    x: { grid: { display: false } }
+                    x: { grid: { display: false, color: 'rgba(39,57,29,0.06)' } }
                 }
             }
         });
@@ -207,9 +207,9 @@
                 datasets: [{
                     label: 'Accuracy %',
                     data: radarData,
-                    backgroundColor: 'rgba(61, 187, 128, 0.15)',
-                    borderColor: '#3dbb80',
-                    pointBackgroundColor: '#3dbb80',
+                    backgroundColor: 'rgba(61, 122, 52, 0.12)',
+                    borderColor: '#3d7a34',
+                    pointBackgroundColor: '#3d7a34',
                     pointBorderColor: '#fff',
                     borderWidth: 2,
                 }]
@@ -220,9 +220,9 @@
                 plugins: { legend: { display: false } },
                 scales: {
                     r: {
-                        angleLines: { color: 'rgba(255,255,255,0.08)' },
-                        grid: { color: 'rgba(255,255,255,0.08)' },
-                        pointLabels: { color: '#e8eaf0', font: { size: 11 } },
+                        angleLines: { color: 'rgba(39,57,29,0.12)' },
+                        grid: { color: 'rgba(39,57,29,0.1)' },
+                        pointLabels: { color: '#27391D', font: { size: 11 } },
                         ticks: { display: false, min: 0, max: 100 },
                         suggestedMin: 0,
                         suggestedMax: 100,
