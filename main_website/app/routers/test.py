@@ -22,7 +22,6 @@ Rules enforced here (server-side):
 
 from fastapi import APIRouter, Request, Form, status
 from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
 from datetime import datetime, timezone
 
 from app.dependencies import get_current_user
@@ -36,9 +35,9 @@ from app.config import (
     TEST_DURATION_MINUTES,
 )
 from app.db import get_connection, put_connection
+from app.templates_env import templates
 
 router = APIRouter(prefix="/test", tags=["test"])
-templates = Jinja2Templates(directory="app/templates")
 
 # ─── helpers ─────────────────────────────────────────────────────────────────
 

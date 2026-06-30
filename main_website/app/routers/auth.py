@@ -4,15 +4,14 @@ Uses Supabase Auth (email + password only).
 Sets / clears an HTTP-only access_token cookie.
 """
 
-from fastapi import APIRouter, Request, Form, status
+from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
 
-from app.supabase_client import supabase_anon
 from app.dependencies import get_current_user
+from app.supabase_client import supabase_anon
 
 router = APIRouter(prefix="/auth", tags=["auth"])
-templates = Jinja2Templates(directory="app/templates")
+from app.templates_env import templates
 
 
 # ──────────────────────────────────────────────────────────────────────────────

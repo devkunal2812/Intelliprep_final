@@ -5,16 +5,15 @@ IntelliPrep Main Website — FastAPI Application Entry Point
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
 
 from app.routers import auth, dashboard, test, analytics
 from app.db import init_pool
+from app.templates_env import templates
 
 app = FastAPI(title="IntelliPrep", docs_url=None, redoc_url=None)
 
 # ── Static files & templates ───────────────────────────────────────────────────
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
-templates = Jinja2Templates(directory="app/templates")
 
 # ── Startup ────────────────────────────────────────────────────────────────────
 @app.on_event("startup")

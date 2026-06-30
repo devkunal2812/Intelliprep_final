@@ -12,15 +12,14 @@ Shows:
 
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
-from fastapi.templating import Jinja2Templates
 
 from app.dependencies import get_current_user
 from app.services.skill_profile import get_skill_profile
 from app.config import CALIBRATION_TESTS_REQUIRED
 from app.db import get_connection, put_connection
+from app.templates_env import templates
 
 router = APIRouter(tags=["dashboard"])
-templates = Jinja2Templates(directory="app/templates")
 
 
 @router.get("/dashboard", response_class=HTMLResponse)
