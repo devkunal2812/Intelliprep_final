@@ -53,8 +53,7 @@ def generate_calibration_question_ids(exclude_ids: List[int] | None = None) -> L
                 """
                 SELECT id, topic, difficulty
                 FROM main_questions
-                WHERE is_active = true
-                  AND domain = %s
+                WHERE domain = %s
                 ORDER BY random();
                 """,
                 (domain,),

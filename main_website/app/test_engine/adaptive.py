@@ -61,13 +61,12 @@ def generate_adaptive_question_ids(
         for domain, domain_quota in DOMAIN_QUOTAS.items():
             remaining = domain_quota
 
-            # Fetch all active, non-excluded questions for this domain
+            # Fetch all non-excluded questions for this domain
             cur.execute(
                 """
                 SELECT id, topic, difficulty
                 FROM main_questions
-                WHERE is_active = true
-                  AND domain = %s
+                WHERE domain = %s
                 ORDER BY random();
                 """,
                 (domain,),
