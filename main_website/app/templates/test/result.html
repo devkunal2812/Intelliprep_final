@@ -16,6 +16,12 @@
 <div class="result-summary" id="result-summary">
     <div class="score-circle-wrap">
         <svg class="score-ring" viewBox="0 0 120 120">
+            <defs>
+                <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"   stop-color="#6c8be8" />
+                    <stop offset="100%" stop-color="#3dbb80" />
+                </linearGradient>
+            </defs>
             <circle class="ring-bg" cx="60" cy="60" r="52" />
             <circle class="ring-fill" cx="60" cy="60" r="52"
                 stroke-dasharray="{{ (score_pct / 100 * 326.73)|round(2) }} 326.73" stroke-dashoffset="81.68" />
