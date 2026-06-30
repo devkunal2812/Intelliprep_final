@@ -101,28 +101,136 @@
 
 </div>
 
-<!-- ── Test Trend ─────────────────────────────────────────────────────────── -->
-<div class="section-card" id="trend-section">
-    <h2 class="section-title-sm">Accuracy Trend (Last {{ test_trend|length }} Tests)</h2>
-    {% if test_trend %}
-    <div class="trend-chart" id="trend-chart">
-        {% for t in test_trend %}
-        <div class="trend-col" id="trend-col-{{ loop.index }}">
-            <div class="trend-bar-wrap">
-                <div class="trend-bar {% if t.test_type == 'calibration' %}trend-calib{% else %}trend-adaptive{% endif %}"
-                    style="height: {{ t.accuracy }}%" title="{{ t.accuracy }}%"></div>
-            </div>
-            <span class="trend-label">{{ t.label }}</span>
-            <span class="trend-type">{{ 'C' if t.test_type == 'calibration' else 'A' }}</span>
+<!-- ── Charts Row: Trend + Radar ──────────────────────────────────────────── -->
+<div class="analytics-grid" id="charts-row">
+
+    <!-- Accuracy Trend -->
+    <div class="section-card" id="trend-section">
+        <h2 class="section-title-sm">Accuracy Trend (Last {{ test_trend|length }} Tests)</h2>
+        {% if test_trend %}
+        <div style="position: relative; height: 220px;">
+            <canvas id="trendChart"></canvas>
         </div>
-        {% endfor %}
+        <div class="trend-legend" style="margin-top: .75rem;">
+            <span><span class="legend-dot trend-calib-dot"></span> Calibration</span>
+            <span><span class="legend-dot trend-adaptive-dot"></span> Adaptive</span>
+        </div>
+        {% else %}
+        <p class="empty-state">Test history will appear here after you complete tests.</p>
+        {% endif %}
     </div>
-    <div class="trend-legend">
-        <span><span class="legend-dot trend-calib-dot"></span> Calibration</span>
-        <span><span class="legend-dot trend-adaptive-dot"></span> Adaptive</span>
+
+    <!-- Skill Radar -->
+    <div class="section-card" id="radar-section">
+        <h2 class="section-title-sm">Skill Radar</h2>
+        {% if topic_data %}
+        <div style="position: relative; height: 220px; display: flex; justify-content: center;">
+            <canvas id="radarChart"></canvas>
+        </div>
+        {% else %}
+        <p class="empty-state">Complete a test to see your skill radar.</p>
+        {% endif %}
     </div>
-    {% else %}
-    <p class="empty-state">Test history will appear here after you complete tests.</p>
-    {% endif %}
+
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Chart.defaults.color = '#717899';
+        Chart.defaults.font.family = "'Inter', sans-serif";
+
+        // ── Accuracy Trend Chart ──────────────────────────────────────────
+        {% if test_trend %}
+        const trendLabels  = {{ test_trend | map(attribute='label') | list | tojson | safe }};
+        const trendValues  = {{ test_trend | map(attribute='accuracy') | list | tojson | safe }};
+        const trendTypes   = {{ test_trend | map(attribute='test_type') | list | tojson | safe }};
+
+        const pointColors = trendTypes.map(t =>
+            t === 'calibration' ? '#e8a23a' : '#6c8be8'
+        );
+
+        new Chart(document.getElementById('trendChart').getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: trendLabels,
+                datasets: [{
+                    label: 'Accuracy %',
+                    data: trendValues,
+                    borderColor: '#6c8be8',
+                    backgroundColor: 'rgba(108, 139, 232, 0.08)',
+                    borderWidth: 2,
+                    tension: 0.35,
+                    fill: true,
+                    pointBackgroundColor: pointColors,
+                    pointBorderColor: pointColors,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: function(ctx) {
+                                return trendTypes[ctx.dataIndex] === 'calibration'
+                                    ? 'Calibration' : 'Adaptive';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { callback: v => v + '%' }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+        {% endif %}
+
+        // ── Skill Radar Chart ─────────────────────────────────────────────
+        {% if topic_data %}
+        const radarLabels = {{ topic_data | map(attribute='topic') | list | tojson | safe }};
+        const radarData   = {{ topic_data | map(attribute='accuracy') | list | tojson | safe }};
+
+        new Chart(document.getElementById('radarChart').getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: radarLabels,
+                datasets: [{
+                    label: 'Accuracy %',
+                    data: radarData,
+                    backgroundColor: 'rgba(61, 187, 128, 0.15)',
+                    borderColor: '#3dbb80',
+                    pointBackgroundColor: '#3dbb80',
+                    pointBorderColor: '#fff',
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(255,255,255,0.08)' },
+                        grid: { color: 'rgba(255,255,255,0.08)' },
+                        pointLabels: { color: '#e8eaf0', font: { size: 11 } },
+                        ticks: { display: false, min: 0, max: 100 },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                    }
+                }
+            }
+        });
+        {% endif %}
+    });
+</script>
 {% endblock %}

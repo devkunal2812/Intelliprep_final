@@ -21,6 +21,28 @@
 
     {% block body %}
     <div class="app-shell">
+        <!-- Mobile top bar -->
+        <div class="mobile-topbar" id="mobile-topbar">
+            <button class="hamburger" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <span class="mobile-brand">IntelliPrep</span>
+            {% if secs_remaining is defined %}
+            <span style="width:28px;"></span>
+            {% else %}
+            <a href="/auth/logout" class="mobile-logout" title="Log out">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+
+        <!-- Sidebar overlay (mobile) -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
         <!-- Sidebar nav -->
         <nav class="sidebar {% if secs_remaining is defined %}sidebar-locked{% endif %}" id="sidebar">
             <div class="sidebar-brand">

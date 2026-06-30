@@ -1,5 +1,41 @@
 /* IntelliPrep — Main JavaScript */
 
+// ── Hamburger / mobile sidebar ────────────────────────────────────────────────
+(function () {
+    var btn     = document.getElementById('hamburger-btn');
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebar-overlay');
+
+    if (!btn || !sidebar || !overlay) return;
+
+    function openSidebar() {
+        sidebar.classList.add('sidebar-open');
+        overlay.classList.add('visible');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('sidebar-open');
+        overlay.classList.remove('visible');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', function () {
+        sidebar.classList.contains('sidebar-open') ? closeSidebar() : openSidebar();
+    });
+
+    overlay.addEventListener('click', closeSidebar);
+
+    // Close on nav link click (mobile)
+    sidebar.querySelectorAll('.nav-link, .logout-btn').forEach(function (el) {
+        el.addEventListener('click', closeSidebar);
+    });
+})();
+
 // ── Password toggle ───────────────────────────────────────────────────────────
 document.querySelectorAll('.toggle-pw').forEach(function (btn) {
     btn.addEventListener('click', function () {
